@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Edit an entry
+{% endblock %}
+
+{% block body %}
+    <form action="{% url 'save' %}" method="POST">
+        {% csrf_token %}
+        <h1>Edit an entry</h1>
+        <label>Title</label>
+        <br>
+        <input type="text" name="title" value="{{ title }}">
+        <br>
+        <label>Markdown text</label>
+        <br>
+        <textarea name="wiki" class="form-control" rows="10">{{ text }}</textarea>
+        <br>
+        <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+
+{% endblock %}
